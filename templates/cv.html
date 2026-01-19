@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{name}} - CV</title>
+  <link rel="stylesheet" href="cv.css">
+</head>
+<body>
+  <div class="cv-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="name-block">
+        <h1 class="name">{{firstName}}<br>{{lastName}}</h1>
+        <div class="name-bar"></div>
+      </div>
+      <div class="contact-block">
+        {{#if phone}}<div class="contact-item">{{phone}}</div>{{/if}}
+        {{#if email}}<div class="contact-item">{{email}}</div>{{/if}}
+        {{#if linkedin}}<div class="contact-item">LinkedIn: <a href="{{linkedinUrl}}">{{linkedin}}</a></div>{{/if}}
+        {{#if website}}<div class="contact-item">Website: <a href="{{websiteUrl}}">{{website}}</a></div>{{/if}}
+        {{#if caseStudies}}<div class="contact-item">Case studies: <a href="{{caseStudiesUrl}}">{{caseStudies}}</a></div>{{/if}}
+        {{#if location}}<div class="contact-item location">{{location}}</div>{{/if}}
+      </div>
+    </header>
+
+    <!-- Profile and Core Strengths -->
+    <section class="profile-strengths">
+      <div class="profile">
+        <h2 class="section-title">Profile</h2>
+        <div class="profile-content">
+          {{profile}}
+        </div>
+      </div>
+      <div class="strengths">
+        <h2 class="section-title">Core strengths</h2>
+        <ul class="strengths-list">
+          {{#each strengths}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Experience Summary -->
+    {{#if experienceSummary}}
+    <section class="experience-summary">
+      <h2 class="section-title">Experience summary</h2>
+      <div class="summary-list">
+        {{#each experienceSummary}}
+        <div class="summary-item">
+          {{#if logo}}<img src="{{logo}}" alt="" class="company-logo">{{/if}}
+          {{#unless logo}}<span class="logo-placeholder"></span>{{/unless}}
+          <span class="summary-title">{{title}} at {{#if companyUrl}}<a href="{{companyUrl}}" class="company-name">{{company}}</a>{{/if}}{{#unless companyUrl}}<span class="company-name">{{company}}</span>{{/unless}}</span>
+          <span class="summary-date">{{date}}</span>
+        </div>
+        {{/each}}
+        {{#if moreBelow}}
+        <div class="summary-item more-below-item">
+          <span class="logo-placeholder point-down"></span>
+          <span class="more-below">More below</span>
+        </div>
+        {{/if}}
+      </div>
+    </section>
+    {{/if}}
+
+    <!-- Mentorship -->
+    {{#if mentorship}}
+    <section class="mentorship">
+      <h2 class="section-title">Mentorship</h2>
+      <div class="summary-list">
+        {{#each mentorship}}
+        <div class="summary-item">
+          {{#if logo}}<img src="{{logo}}" alt="" class="company-logo">{{/if}}
+          {{#unless logo}}<span class="logo-placeholder"></span>{{/unless}}
+          <span class="summary-title">{{title}} at {{#if companyUrl}}<a href="{{companyUrl}}" class="company-name">{{company}}</a>{{/if}}{{#unless companyUrl}}<span class="company-name">{{company}}</span>{{/unless}}</span>
+          <span class="summary-date">{{date}}</span>
+        </div>
+        {{/each}}
+      </div>
+    </section>
+    {{/if}}
+
+    <!-- Detailed Experience -->
+    <section class="experience">
+      <h2 class="section-title page-break-before">Experience</h2>
+      {{#each experience}}
+      <article class="experience-entry {{#if pageBreakBefore}}page-break-before{{/if}}">
+        <div class="experience-header">
+          {{#if logo}}<img src="{{logo}}" alt="" class="company-logo">{{/if}}
+          {{#if icon}}<span class="experience-icon">{{icon}}</span>{{/if}}
+          <h3 class="experience-title">{{title}} at {{#if companyUrl}}<a href="{{companyUrl}}" class="company-name">{{company}}</a>{{/if}}{{#unless companyUrl}}<span class="company-name">{{company}}</span>{{/unless}}</h3>
+          <span class="experience-date">{{date}}</span>
+        </div>
+        <p class="company-description">{{description}}</p>
+        {{#if subtitle}}<p class="experience-subtitle">{{subtitle}}</p>{{/if}}
+        {{#if achievements}}
+        <ul class="achievements">
+          {{#each achievements}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </article>
+      {{/each}}
+    </section>
+
+    <!-- Education -->
+    {{#if education}}
+    <section class="education">
+      <h2 class="section-title">Education</h2>
+      {{#each education}}
+      <div class="education-entry">
+        <span class="education-icon"></span>
+        <h3 class="education-title">{{degree}} at <span class="company-name">{{institution}}</span></h3>
+        <span class="education-date">{{date}}</span>
+      </div>
+      {{/each}}
+    </section>
+    {{/if}}
+  </div>
+</body>
+</html>

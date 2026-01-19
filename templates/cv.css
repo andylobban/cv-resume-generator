@@ -1,0 +1,490 @@
+/* ==========================================================================
+   CV Generator - Stylesheet
+   ========================================================================== */
+
+/* GT Flexa Font */
+@font-face {
+  font-family: 'GT Flexa';
+  src: url('../fonts/GT-Flexa-Standard-Bold.woff2') format('woff2'),
+       url('../fonts/GT-Flexa-Standard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Use the same Bold file for italic styling (browser will apply slant) */
+@font-face {
+  font-family: 'GT Flexa';
+  src: url('../fonts/GT-Flexa-Standard-Bold.woff2') format('woff2'),
+       url('../fonts/GT-Flexa-Standard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --color-accent: #731E0D;
+  --color-text: #160F02;
+  --color-text-light: #5E5E5E;
+  --color-link: #160F02;
+  --color-background: #ffffff;
+  --color-bar: #ED6F55;
+
+  /* Typography */
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading: 'GT Flexa', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 2px;
+  --spacing-sm: 6px;
+  --spacing-md: 12px;
+  --spacing-lg: 18px;
+  --spacing-xl: 24px;
+
+  /* Page */
+  --page-margin: 40px;
+  --content-width: 100%;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 9pt;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+/* Coral bar under name */
+.name-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-bar);
+  margin-top: 12px;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+/* ==========================================================================
+   CV Container
+   ========================================================================== */
+
+.cv-container {
+  position: relative;
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: var(--page-margin);
+  padding-top: 20px;
+  background: var(--color-background);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+  gap: var(--spacing-xl);
+}
+
+.name-block {
+  flex-shrink: 0;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 40pt;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 0.95;
+  letter-spacing: -0.15rem;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.contact-block {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contact-item {
+  margin-bottom: 2px;
+}
+
+.contact-item.location {
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-light);
+  font-size: 0.85rem;
+}
+
+.contact-item a {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Section Titles
+   ========================================================================== */
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 16pt;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 14px;
+  margin-top: var(--spacing-md);
+}
+
+.section-title:first-child {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   Profile & Strengths (Two Column)
+   ========================================================================== */
+
+.profile-strengths {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 40px;
+  margin-bottom: var(--spacing-md);
+}
+
+.profile .section-title,
+.strengths .section-title {
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.experience-summary .section-title,
+.mentorship .section-title {
+  margin-top: 24px;
+}
+
+.education .section-title {
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.profile-content {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.profile-content p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.profile-content strong {
+  font-weight: 600;
+}
+
+.strengths-list {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.strengths-list li {
+  position: relative;
+  padding-left: var(--spacing-md);
+  margin-bottom: 10px;
+}
+
+.strengths-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Experience Summary & Mentorship
+   ========================================================================== */
+
+.experience-summary,
+.mentorship {
+  margin-bottom: var(--spacing-md);
+}
+
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.company-logo {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-placeholder {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+
+.logo-placeholder.point-down::before {
+  content: '👇';
+  font-size: 9pt;
+}
+
+.summary-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12pt;
+  flex: 1;
+}
+
+.company-name {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.summary-date {
+  color: var(--color-text-light);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.more-below {
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.more-below-item {
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Detailed Experience
+   ========================================================================== */
+
+.experience {
+  margin-bottom: var(--spacing-lg);
+}
+
+.experience-entry {
+  margin-bottom: 32px;
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.experience-icon {
+  font-size: 9pt;
+  width: 19px;
+  flex-shrink: 0;
+}
+
+.experience-title {
+  font-family: var(--font-heading);
+  font-size: 12pt;
+  font-weight: 700;
+  flex: 1;
+}
+
+.experience-date {
+  color: var(--color-text-light);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.company-description {
+  font-style: italic;
+  color: var(--color-text);
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.experience-subtitle {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.achievements {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.achievements li {
+  position: relative;
+  padding-left: var(--spacing-md);
+  margin-bottom: 2px;
+}
+
+.achievements li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Education
+   ========================================================================== */
+
+.education {
+  margin-bottom: var(--spacing-lg);
+}
+
+.education-entry {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.education-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+
+.education-icon::before {
+  content: '🎓';
+  font-size: 9pt;
+}
+
+.education-title {
+  font-family: var(--font-heading);
+  flex: 1;
+  font-size: 12pt;
+  font-weight: 700;
+}
+
+.education-date {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  html {
+    font-size: 9pt;
+  }
+
+  body {
+    background: white;
+  }
+
+  .cv-container {
+    max-width: none;
+    padding: 0;
+    padding-top: 10px;
+    margin: 0;
+  }
+
+
+  .page-break-before {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  /* Ensure colors print correctly */
+  .section-title,
+  .top-bar {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 1.3cm 1.5cm;
+}
+
+/* ==========================================================================
+   Preview Mode (Browser)
+   ========================================================================== */
+
+@media screen {
+  body {
+    background: #f0f0f0;
+    padding: 20px;
+  }
+
+  .cv-container {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    overflow: visible;
+  }
+
+  .top-bar {
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 2px 2px 0 0;
+  }
+}
