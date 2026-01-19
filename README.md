@@ -2,6 +2,8 @@
 
 A self-contained system for generating professionally designed CVs from Markdown files. Edit your CV in Markdown, run a single command, get a print-ready PDF.
 
+_I made this completely in Claude Code to learn. Buyer beware 😄_
+
 ## Features
 
 - **Markdown-based**: Write CVs in Markdown with YAML front matter
@@ -282,4 +284,4 @@ Before pushing to a public repository:
 
 ## License
 
-Private use. Do not redistribute font files.
+Private use.
