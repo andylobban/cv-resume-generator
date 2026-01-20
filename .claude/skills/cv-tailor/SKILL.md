@@ -78,12 +78,12 @@ Only after user approves, run:
 node src/build.js cvs/roles/andrew-lobban-{companyname}.md
 ```
 
-Output will be at:
-```
-./output/andrew-lobban-{companyname}.pdf
+Then open the generated PDF:
+```bash
+open ./output/roles/andrew-lobban-{companyname}.pdf
 ```
 
-Confirm PDF generation and provide the path.
+Confirm PDF generation and that it has been opened.
 
 ## Quick Reference
 

@@ -368,10 +368,17 @@ async function buildSingle(cvPath) {
   const cvData = parseMarkdownCV(cvPath);
   const html = generateHTML(cvData);
 
-  ensureOutputDir();
+  // Determine output directory based on input path
+  const isRolesCV = cvPath.includes(path.join('cvs', 'roles'));
+  const outputDir = isRolesCV ? path.join(DIRS.output, 'roles') : DIRS.output;
+
+  // Ensure output directory exists
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
 
   const baseName = path.basename(cvPath, '.md');
-  const pdfPath = path.join(DIRS.output, `${baseName}.pdf`);
+  const pdfPath = path.join(outputDir, `${baseName}.pdf`);
 
   await generatePDF(html, pdfPath);
 

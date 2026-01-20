@@ -4,6 +4,7 @@ node_modules/
 # Output files (generated PDFs and preview HTML)
 output/*.pdf
 output/*.html
+output/roles/
 
 # Font files (paid/licensed fonts - do not commit)
 fonts/*.woff
