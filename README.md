@@ -1,4 +1,4 @@
-# CV Generator
+# CV / Resume Generator
 
 A self-contained system for generating professionally designed CVs from Markdown files. Edit your CV in Markdown, run a single command, get a print-ready PDF.
 
