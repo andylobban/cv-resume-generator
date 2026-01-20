@@ -27,5 +27,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Role-specific CVs (generated for job applications)
+cvs/roles/
+
 # Original source PDF (optional - remove this line if you want to keep it)
 # *.pdf
