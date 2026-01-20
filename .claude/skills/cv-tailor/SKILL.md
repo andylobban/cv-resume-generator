@@ -10,9 +10,8 @@ Adapts Andrew Lobban's CV for specific job applications.
 ## Configuration
 
 ```
-CV_GENERATOR_PATH: ~/Development/cv-generator
-BASE_CVS_DIR: ~/Development/cv-generator/cvs
-OUTPUT_DIR: ~/Development/cv-generator/cvs/roles
+BASE_CVS_DIR: ./cvs
+OUTPUT_DIR: ./cvs/roles
 ```
 
 ## Base CV Selection
@@ -43,7 +42,7 @@ From the job ad, extract:
 
 ### Step 2: Load and adapt CV
 
-1. Read base CV from `~/Development/cv-generator/cvs/andrew-lobban-{keyword}.md`
+1. Read base CV from `./cvs/andrew-lobban-{keyword}.md`
 2. Read `references/adaptation-guide.md` for adaptation rules
 3. Apply adaptations:
    - Rewrite profile to emphasize relevant experience
@@ -55,20 +54,20 @@ From the job ad, extract:
 
 Save adapted CV to:
 ```
-~/Development/cv-generator/cvs/roles/andrew-lobban-{companyname}.md
+./cvs/roles/andrew-lobban-{companyname}.md
 ```
 
 ### Step 4: Human review checkpoint
 
-**STOP HERE.** Open the file for the user to review:
+**STOP HERE.** Open the file in the user's default application for review:
 
-1. Use `cat` or `view` to display the **complete file contents** - not a summary
-2. Show the entire markdown file so the user can read through it
-3. Then ask:
+```bash
+open ./cvs/roles/andrew-lobban-{companyname}.md
+```
 
-> "Here's the tailored CV. Review it above and let me know if you'd like any changes, or say 'generate' to create the PDF."
+Then ask:
 
-**Do not summarize changes.** Show the full document.
+> "I've opened the tailored CV in your editor. Review it and let me know if you'd like any changes, or say 'generate' to create the PDF."
 
 Wait for explicit approval before proceeding.
 
@@ -76,12 +75,12 @@ Wait for explicit approval before proceeding.
 
 Only after user approves, run:
 ```bash
-cd ~/Development/cv-generator && node src/build.js cvs/roles/andrew-lobban-{companyname}.md
+node src/build.js cvs/roles/andrew-lobban-{companyname}.md
 ```
 
 Output will be at:
 ```
-~/Development/cv-generator/output/andrew-lobban-{companyname}.pdf
+./output/andrew-lobban-{companyname}.pdf
 ```
 
 Confirm PDF generation and provide the path.
@@ -100,4 +99,4 @@ Confirm PDF generation and provide the path.
 
 - `references/adaptation-guide.md` - Detailed adaptation rules
 
-Base CVs are read from `~/Development/cv-generator/cvs/` at runtime.
+Base CVs are read from `./cvs/` at runtime.
