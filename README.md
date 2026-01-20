@@ -36,7 +36,8 @@ npm run preview
 ```
 cv-generator/
 ├── cvs/                    # Your CV markdown files
-│   └── andrew-lobban-design.md
+│   ├── andrew-lobban-cv-design.md
+│   └── roles/              # Role-specific CVs (gitignored)
 ├── fonts/                  # Custom font files (gitignored)
 │   └── (your .woff/.woff2 files)
 ├── templates/              # HTML/CSS templates
@@ -45,6 +46,9 @@ cv-generator/
 ├── output/                 # Generated PDFs (gitignored)
 ├── src/
 │   └── build.js           # Build script
+├── .claude/
+│   └── skills/
+│       └── cv-tailor/     # Claude Code skill for tailoring CVs
 ├── package.json
 ├── .gitignore
 └── README.md
@@ -223,9 +227,36 @@ await page.pdf({
 
 ## Tailoring for Job Applications
 
+### Using Claude Code's cv-tailor skill (recommended)
+
+If you're using Claude Code, the `/cv-tailor` skill automates CV tailoring:
+
+```
+/cv-tailor using design for: [paste job ad here]
+```
+
+The skill will:
+1. Analyze the job requirements and extract key information
+2. Load your base CV (design, product, or consultant version)
+3. Adapt the content—rewriting the profile, reordering strengths, and emphasizing relevant achievements
+4. Save the tailored CV to `cvs/roles/andrew-lobban-{companyname}.md`
+5. Show you the full document for review
+6. Generate the PDF after you approve
+
+You can specify which base CV to use:
+- `using design` - design-focused CV
+- `using product` - product-focused CV
+- `using consultant` - consultant-focused CV
+
+If you don't specify, the skill will infer from the role or ask.
+
+**Note:** Role-specific CVs in `cvs/roles/` are gitignored to keep job applications private.
+
+### Manual approach
+
 1. Create a copy of your base CV:
    ```bash
-   cp cvs/andrew-lobban-design.md cvs/andrew-lobban-company-role.md
+   cp cvs/andrew-lobban-cv-design.md cvs/roles/andrew-lobban-companyname.md
    ```
 
 2. Tailor the content:
@@ -235,7 +266,7 @@ await page.pdf({
 
 3. Generate:
    ```bash
-   node src/build.js cvs/andrew-lobban-company-role.md
+   node src/build.js cvs/roles/andrew-lobban-companyname.md
    ```
 
 ## Pushing to GitHub
