@@ -200,11 +200,19 @@ function generateHTML(cvData) {
     `<style>${css}</style>`
   );
 
-  // Fix font paths to be absolute
-  const fontsAbsPath = DIRS.fonts;
+  // Embed fonts as base64 data URLs for reliable PDF generation
   template = template.replace(
-    /url\(['"]?\.\.\/fonts\//g,
-    `url('file://${fontsAbsPath}/`
+    /url\(['"]?\.\.\/fonts\/([^'")\s]+)['"]?\)\s*format\(['"]([^'"]+)['"]\)/g,
+    (match, filename, format) => {
+      const fontPath = path.join(DIRS.fonts, filename);
+      if (fs.existsSync(fontPath)) {
+        const fontData = fs.readFileSync(fontPath).toString('base64');
+        const ext = path.extname(filename).slice(1);
+        const mimeType = ext === 'woff2' ? 'font/woff2' : ext === 'woff' ? 'font/woff' : `font/${ext}`;
+        return `url('data:${mimeType};base64,${fontData}') format('${format}')`;
+      }
+      return match;
+    }
   );
 
   // Render template with CV data
